@@ -1,0 +1,24 @@
+{% extends 'vendas/base.html' %}
+{% block body %}
+    {% set venda=venda or None %}
+    {% set errors=errors or None %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <br/>
+
+                <div class="well">
+                    <h1 class="text-center">{% trans %}Venda Form{% endtrans %}</h1>
+
+                    <form action="{{ save_path }}" method="post" role="form">
+                        {{ csrf_input() }}
+                        {{ form_input(_('Tipo Imovel'),'tipo_imovel',venda.tipo_imovel,errors.tipo_imovel) }}
+                        {{ form_input(_('Cep'),'cep',venda.cep,errors.cep) }}
+                        <button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

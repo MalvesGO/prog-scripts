@@ -1,0 +1,53 @@
+{% extends 'locacaos/base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{% trans %}This is a generic home for locacao_app {% endtrans %}  </h1>
+                {% if _logged_user and ('ADMIN' in _logged_user.groups) %}
+                <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>
+                {% endif %}
+                <hr/>
+                <h2>{% trans %}List of Locacaos{% endtrans %}</h2>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Numero Dormitorios{% endtrans %}</th>
+                        <th>{% trans %}Detalhes{% endtrans %}</th>
+                        <th>{% trans %}Cpf Responsavel{% endtrans %}</th>
+                        <th>{% trans %}Bairro{% endtrans %}</th>
+                        <th>{% trans %}Vaga Garagem{% endtrans %}</th>
+                        <th>{% trans %}Rua{% endtrans %}</th>
+                        <th>{% trans %}Area Total{% endtrans %}</th>
+                        <th>{% trans %}Nome Responsavel{% endtrans %}</th>
+                        <th>{% trans %}Numero{% endtrans %}</th>
+                        <th>{% trans %}Valor{% endtrans %}</th>
+                        <th>{% trans %}Cep{% endtrans %}</th>
+                        <th>{% trans %}Tipo Imovel{% endtrans %}</th>
+                        <th>{% trans %}Area Construida{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for locacao in locacaos %}
+                        <tr>
+                            <td>{{ locacao.numero_dormitorios }}</td>
+                            <td>{{ locacao.detalhes }}</td>
+                            <td>{{ locacao.cpf_responsavel }}</td>
+                            <td>{{ locacao.bairro }}</td>
+                            <td>{{ locacao.vaga_garagem }}</td>
+                            <td>{{ locacao.rua }}</td>
+                            <td>{{ locacao.area_total }}</td>
+                            <td>{{ locacao.nome_responsavel }}</td>
+                            <td>{{ locacao.numero }}</td>
+                            <td>{{ locacao.valor }}</td>
+                            <td>{{ locacao.cep }}</td>
+                            <td>{{ locacao.tipo_imovel }}</td>
+                            <td>{{ locacao.area_construida }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
