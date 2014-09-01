@@ -8,13 +8,25 @@
                 <br/>
 
                 <div class="well">
-                    <h1 class="text-center">{% trans %}Venda Form{% endtrans %}</h1>
+                    <h1 class="text-center">{% trans %}Cadastrar Casa à Venda{% endtrans %}</h1>
 
                     <form action="{{ save_path }}" method="post" role="form">
                         {{ csrf_input() }}
-                        {{ form_input(_('Tipo Imovel'),'tipo_imovel',venda.tipo_imovel,errors.tipo_imovel) }}
-                        {{ form_input(_('Cep'),'cep',venda.cep,errors.cep) }}
-                        <button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+                        {{ form_input(_('Responsável do Imóvel'),'nome_responsavel',venda.nome_responsavel,errors.nome_responsavel) }}
+                        {{ form_input(_('CPF'),'cpf_responsavel',venda.cpf_responsavel,errors.cpf_responsavel) }}
+                        {{ form_input(_('Tipo de Imóvel'),'tipo_imovel',venda.tipo_imovel,errors.tipo_imovel) }}
+                        {{ form_input(_('CEP'),'cep',venda.cep,errors.cep) }}
+                        {{ form_input(_('Bairro'),'bairro',venda.bairro,errors.bairro) }}
+                        {{ form_input(_('Rua'),'rua',venda.rua,errors.rua) }}
+                        {{ form_input(_('Número'),'numero',venda.numero,errors.numero) }}
+                        {{ form_input(_('Informe Quantidade de Dormitórios'),'numero_dormitorios',venda.numero_dormitorios,errors.numero_dormitorios) }}
+                        {{ form_input(_('Quantidade de Vagas na Garagem'),'vaga_garagem',venda.vaga_garagem,errors.vaga_garagem) }}
+                        {{ form_input(_('Àrea Total'),'area_total',venda.area_total,errors.area_total) }}
+                        {{ form_input(_('Àrea Construida'),'area_construida',venda.area_construida,errors.area_construida) }}
+                        {{ form_input(_('Forma de Pagamento'),'forma_pg',venda.forma_pg,errors.forma_pg) }}
+                        {{ form_input(_('Valor do Imóvel'),'valor',venda.valor,errors.valor) }}
+                        {{ form_input(_('Outras Informações'),'detalhes',venda.detalhes,errors.detalhes) }}
+                        <button type="submit" class="btn btn-success">{% trans %}Salvar{% endtrans %}</button>
                     </form>
                 </div>
             </div>

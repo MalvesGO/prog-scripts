@@ -8,24 +8,24 @@
                 <br/>
 
                 <div class="well">
-                    <h1 class="text-center">{% trans %}Locacao Form{% endtrans %}</h1>
+                    <h1 class="text-center">{% trans %}Cadastro de Imóvel para Locação{% endtrans %}</h1>
 
                     <form action="{{ save_path }}" method="post" role="form">
                         {{ csrf_input() }}
-                        {{ form_input(_('Numero Dormitorios'),'numero_dormitorios',locacao.numero_dormitorios,errors.numero_dormitorios) }}
-                        {{ form_input(_('Detalhes'),'detalhes',locacao.detalhes,errors.detalhes) }}
-                        {{ form_input(_('Cpf Responsavel'),'cpf_responsavel',locacao.cpf_responsavel,errors.cpf_responsavel) }}
+                        {{ form_input(_('Responsável do Imóvel'),'nome_responsavel',locacao.nome_responsavel,errors.nome_responsavel) }}
+                        {{ form_input(_('CPF'),'cpf_responsavel',locacao.cpf_responsavel,errors.cpf_responsavel) }}
+                        {{ form_input(_('Tipo de Imovel'),'tipo_imovel',locacao.tipo_imovel,errors.tipo_imovel) }}
+                        {{ form_input(_('CEP'),'cep',locacao.cep,errors.cep) }}
                         {{ form_input(_('Bairro'),'bairro',locacao.bairro,errors.bairro) }}
-                        {{ form_input(_('Vaga Garagem'),'vaga_garagem',locacao.vaga_garagem,errors.vaga_garagem) }}
                         {{ form_input(_('Rua'),'rua',locacao.rua,errors.rua) }}
-                        {{ form_input(_('Area Total'),'area_total',locacao.area_total,errors.area_total) }}
-                        {{ form_input(_('Nome Responsavel'),'nome_responsavel',locacao.nome_responsavel,errors.nome_responsavel) }}
-                        {{ form_input(_('Numero'),'numero',locacao.numero,errors.numero) }}
-                        {{ form_input(_('Valor'),'valor',locacao.valor,errors.valor) }}
-                        {{ form_input(_('Cep'),'cep',locacao.cep,errors.cep) }}
-                        {{ form_input(_('Tipo Imovel'),'tipo_imovel',locacao.tipo_imovel,errors.tipo_imovel) }}
-                        {{ form_input(_('Area Construida'),'area_construida',locacao.area_construida,errors.area_construida) }}
-                        <button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+                        {{ form_input(_('Número'),'numero',locacao.numero,errors.numero) }}
+                        {{ form_input(_('Numero de Dormitórios'),'numero_dormitorios',locacao.numero_dormitorios,errors.numero_dormitorios) }}
+                        {{ form_input(_('Quantidade de Vagas na Garagem'),'vaga_garagem',locacao.vaga_garagem,errors.vaga_garagem) }}
+                        {{ form_input(_('Outras Informações'),'detalhes',locacao.detalhes,errors.detalhes) }}
+                        {{ form_input(_('Àrea Construída'),'area_construida',locacao.area_construida,errors.area_construida) }}
+                        {{ form_input(_('Àrea Total'),'area_total',locacao.area_total,errors.area_total) }}
+                        {{ form_input(_('Valor Mensal'),'valor',locacao.valor,errors.valor) }}
+                        <button type="submit" class="btn btn-success">{% trans %}Salvar{% endtrans %}</button>
                     </form>
                 </div>
             </div>

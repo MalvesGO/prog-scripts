@@ -45,16 +45,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand">Inicial</a>
+            <a href="/" class="navbar-brand">Home</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
-                    <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %}Vendas{% endtrans %}</a></li>
-                    <li {{ 'class=active' if tab=='LOCACOES' }}><a href="/locacaos">{% trans %}Locações{% endtrans %}</a></li>
-                    {% if _logged_user and 'ADMIN' in _logged_user.groups %}
-                        <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
-                    {% endif %}
+                 <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %}Vendas{% endtrans %}</a></li>
+                 <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %}Locações{% endtrans %}</a></li>
+
+                {% if _logged_user and 'ADMIN' in _logged_user.groups %}
+                    <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
+                {% endif %}
+
                 {% endmacro %}
                 {% block tabs %}
                     {{ select_tab() }}

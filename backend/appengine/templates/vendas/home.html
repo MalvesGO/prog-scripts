@@ -1,30 +1,69 @@
 {% extends 'vendas/base.html' %}
 {% block body %}
     <div class="container">
-        <div class="row">
+        <div class="row clearfix">
             <div class="col-md-12">
-                <h1>{% trans %}This is a generic home for venda_app {% endtrans %}  </h1>
+
+                <h3 align="center">{% trans %}Casas à Venda{% endtrans %}</h3>
+
                 {% if _logged_user and ('ADMIN' in _logged_user.groups) %}
                 <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>
                 {% endif %}
-                <hr/>
-                <h2>{% trans %}List of Vendas{% endtrans %}</h2>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>{% trans %}Tipo Imovel{% endtrans %}</th>
-                        <th>{% trans %}Cep{% endtrans %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+
+                <div class="row">
                     {% for venda in vendas %}
-                        <tr>
-                            <td>{{ venda.tipo_imovel }}</td>
-                            <td>{{ venda.cep }}</td>
-                        </tr>
+		                <div class="col-sm-6 col-md-4">
+
+                            <div class="thumbnail">
+						        <img alt="300x300" src="http://lorempixel.com/600/400/city" />
+
+                                <div class="caption">
+		                	        <h2> {{ venda.tipo_imovel }} </h2>
+			                        <p>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                           <td>
+                                           <img src="static/img/cama.ico" width="20" height="20">
+                                           <strong>{% trans %}Dormitórios{% endtrans %}</strong></td>
+				                           <td>{{ venda.numero_dormitorios }}</td>
+                                        </tr>
+
+                                        <tr>
+                                           <td>
+                                           <img src="static/img/carro.ico" width="20" height="20">
+                                           <strong>{% trans %}Vagas para Carro{% endtrans %}</strong> </td>
+				                           <td>{{ venda.vaga_garagem }}</td>
+                                        </tr>
+
+                                        <tr>
+                                           <td>
+                                           <span class="glyphicon glyphicon-home"></span>
+                                           <strong>{% trans %}Área do Imóvel{% endtrans %}</strong></td>
+				                           <td>{{ venda.area_total }} m²</td>
+                                        </tr>
+
+                                        <tr>
+                                           <td><strong>{% trans %}R${% endtrans %}</strong></td>
+				                           <td>{{ venda.valor }}</td>
+                                        </tr>
+
+                                        </thead>
+                                        </tbody>
+			                        </table>
+			                        </p>
+			                        <p>
+				                    <a class="btn" href="#">Detalhes » </a>
+			                        </p>
+
+                                </div>
+
+	                        </div>
+
+                        </div>
+
                     {% endfor %}
-                    </tbody>
-                </table>
+                </div>
             </div>
         </div>
     </div>
