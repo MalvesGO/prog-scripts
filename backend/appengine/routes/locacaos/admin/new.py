@@ -6,7 +6,9 @@ from tekton import router
 from gaecookie.decorator import no_csrf
 from locacao_app import facade
 from routes.locacaos import admin
-
+from gaepermission import facade
+from gaepermission.decorator import permissions
+from permission_app.model import ALL_PERMISSIONS_LIST, ADMIN, CORRETOR
 
 @no_csrf
 def index():

@@ -50,8 +50,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
-                 <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %}Vendas{% endtrans %}</a></li>
-                 <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %}Locações{% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %}Vendas{% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %}Locações{% endtrans %}</a></li>
 
                 {% if _logged_user and 'ADMIN' in _logged_user.groups %}
                     <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
@@ -67,7 +67,7 @@
 
                     <form class="form-inline" action="{{ _logout_path }}" method="post">
                         <div class="input-append" id="logout-div">
-                            <span>{{ _logged_user.email }}</span>
+                            <span>{{ _logged_user.name }}</span>
                             <button class="btn btn-danger" type="submit">{% trans %}Logout{% endtrans %}</button>
                             {{ csrf_input() }}
                         </div>
