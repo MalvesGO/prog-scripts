@@ -27,9 +27,7 @@ msgid ""
 "Create CRUD code on\n"
 "                        <a href=\"https://cloud.google.com/products/app-"
 "engine/\">App Engine</a>"
-msgstr ""
-"Crie código CRUD no  <a href=\"https://cloud.google.com/products/app-"
-"engine/\">App Engine</a>"
+msgstr "Crie código CRUD no  <a href=\"https://cloud.google.com/products/app-engine/\">App Engine</a>"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/home.html:25
 msgid ""
@@ -85,7 +83,7 @@ msgstr "Cursos"
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/base/base.html:54
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/home.html:8
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrador"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/base/base.html:67
 msgid "Logout"
@@ -93,7 +91,7 @@ msgstr "Sair"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/base/base.html:73
 msgid "Login"
-msgstr "Login"
+msgstr "Acessar"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/home.html:6
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:6
@@ -110,19 +108,19 @@ msgstr "Lista de Cursos"
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:16
 #, fuzzy
 msgid "D"
-msgstr "Id"
+msgstr "Código"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/home.html:16
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/form.html:16
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:17
 msgid "F"
-msgstr ""
+msgstr "Sexo"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/home.html:17
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/form.html:17
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:18
 msgid "I"
-msgstr ""
+msgstr " "
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/home.html:18
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/form.html:18
@@ -134,7 +132,7 @@ msgstr "Preço"
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/form.html:19
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:20
 msgid "Start"
-msgstr ""
+msgstr "Iniciar"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/home.html:20
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/form.html:20
@@ -158,7 +156,7 @@ msgstr "Criar Novo Curso"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:14
 msgid "Id"
-msgstr "Id"
+msgstr "Código"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:15
 msgid "Creation"
@@ -166,15 +164,15 @@ msgstr "Criação"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/courses/admin/home.html:38
 msgid "Are you sure to delete? Press cancel to avoid deletion."
-msgstr ""
+msgstr "Tem certeza que deseja excluir? Pressione Cancelar para evitar a exclusão."
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/home.html:13
 msgid "Login Options"
-msgstr "Opções de Login"
+msgstr "Opções de Acesso"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/home.html:25
 msgid "Type your email"
-msgstr "Digite seu Email"
+msgstr "Digite seu E-mail"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/pending.html:6
 msgid "Security Information"
@@ -186,9 +184,7 @@ msgid ""
 "The email provided by %(provider)s is already in use. For your security, "
 "we are going to\n"
 "                    send an email to %(email)s to ensure it is yours."
-msgstr ""
-"O email fornecido pelo %(provider)s já está em uso. Para sua segurança, "
-"enviaremos um email de login para %(email)s para assegurar que ele é seu."
+msgstr "O e-mail fornecido pelo %(provider)s já está em uso. Para sua segurança, enviaremos um e-mail de login para %(email)s para assegurar que ele é seu."
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/pending.html:11
 msgid "This security procedure will be necessary only this time."
@@ -197,7 +193,7 @@ msgstr "Esse procedimento de segurança só será necessário essa vez."
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/pending.html:13
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/passwordless/home.html:11
 msgid "Check your spam box, once some providers can filter this email."
-msgstr "Cheque sua caixa de spam pois alguns provedores podem filtrar esse email."
+msgstr "Cheque sua caixa de spam pois alguns provedores podem filtrar esse e-mail."
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/facebook/form.html:6
 msgid "Facebook App Form"
@@ -205,18 +201,16 @@ msgstr "Formulário de Aplicação do Facebook"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/facebook/form.html:8
 msgid "This data is used to proceed Facebook login. More information in"
-msgstr ""
-"Esses dados são necessaŕios para implementar o login com Facebook. Mais "
-"informações em"
+msgstr "Esses dados são necessários para implementar o acesso com o Facebook. Mais informações em"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/facebook/form.html:10
 msgid "Facebook Login Docs"
-msgstr "Documentação de Login com Facebook"
+msgstr "Documentação de Acesso com Facebook"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/facebook/form.html:14
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/passwordless/form.html:14
 msgid "Type the app's id"
-msgstr "Digite o id da aplicação"
+msgstr "Digite o código da aplicação"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/facebook/form.html:16
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/passwordless/form.html:16
@@ -229,23 +223,18 @@ msgstr "Formulário de Aplicação Passworless"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/passwordless/form.html:8
 msgid "This data is used to proceed passswordless login. More information in"
-msgstr ""
-"Esses dados são necessaŕios para implementar o login por email. Mais "
-"informações em"
+msgstr "Esses dados são necessários para implementar o login por e-mail. Mais informações em"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/passwordless/home.html:6
 msgid "Login Email Instructions"
-msgstr "Instruções de Login por Email"
+msgstr "Instruções de Acesso por E-mail"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/login/passwordless/home.html:8
 msgid ""
 "We will send you an email with the login link using\n"
 "                    <a "
 "href=\"https://pswdless.appspot.com/\">Passwordless</a>."
-msgstr ""
-"Enviaremos um email para você contendo o link para login. Ele será "
-"enviado através do serviço  <a "
-"href=\"https://pswdless.appspot.com/\">Passwordless</a>."
+msgstr "Enviaremos um e-mail para você contendo o link de acesso. Ele será enviado através do serviço  <a href=\"https://pswdless.appspot.com/\">Passwordless</a>. "
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/permission/admin.html:41
 msgid "Users Table"
@@ -257,7 +246,7 @@ msgstr "Tabela de Segurança"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/permission/home.html:10
 msgid "Path"
-msgstr "Path"
+msgstr "Caminho"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/permission/home.html:11
 msgid "Allowed Groups"
@@ -267,13 +256,11 @@ msgstr "Grupos Permitidos"
 msgid ""
 "<a href=\"http://pt.wikipedia.org/wiki/Cross-"
 "site_request_forgery\">CSRF</a> Security"
-msgstr ""
-"Segurança <a href=\"http://pt.wikipedia.org/wiki/Cross-"
-"site_request_forgery\">CSRF</a>"
+msgstr "Segurança <a href=\"http://pt.wikipedia.org/wiki/Cross-site_request_forgery\">CSRF</a>"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/permission/home.html:22
 msgid "Secure"
-msgstr "Segur"
+msgstr "Seguro"
 
 #: /home/renzo/PycharmProjects/tekton-fullstack/backend/appengine/templates/permission/home.html:22
 msgid "Unsecure"
