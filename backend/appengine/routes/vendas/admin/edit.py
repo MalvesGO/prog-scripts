@@ -15,7 +15,7 @@ def index(venda_id):
     venda = facade.get_venda_cmd(venda_id)()
     detail_form = facade.venda_detail_form()
     context = {'save_path': router.to_path(save, venda_id), 'venda': detail_form.fill_with_model(venda)}
-    return TemplateResponse(context, 'vendas/admin/form.html')
+    return TemplateResponse(context, 'vendas/admin_locacao/form.html')
 
 
 def save(_handler, venda_id, **venda_properties):
@@ -26,6 +26,6 @@ def save(_handler, venda_id, **venda_properties):
         context = {'errors': cmd.errors,
                    'venda': cmd.form}
 
-        return TemplateResponse(context, 'vendas/admin/form.html')
+        return TemplateResponse(context, 'vendas/admin_locacao/form.html')
     _handler.redirect(router.to_path(admin))
 

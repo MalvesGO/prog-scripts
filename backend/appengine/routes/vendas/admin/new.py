@@ -21,6 +21,6 @@ def save(_handler, venda_id=None, **venda_properties):
         context = {'errors': cmd.errors,
                    'venda': cmd.form}
 
-        return TemplateResponse(context, 'vendas/admin/form.html')
+        return TemplateResponse(context, 'vendas/admino/form.html')
     _handler.redirect(router.to_path(admin))
 

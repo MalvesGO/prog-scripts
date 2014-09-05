@@ -51,13 +51,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand">Home</a>
+            <a href="/" class="navbar-brand"><span class="glyphicon glyphicon-home"></span> </a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
                     <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %} Vendas {% endtrans %}</a></li>
                     <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %} Locações {% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='SOBRE' }}><a href="/sobre">{% trans %} Sobre {% endtrans %}</a></li>
 
                 {% if _logged_user and 'ADMIN' in _logged_user.groups %}
 
@@ -74,8 +75,8 @@
                          <li align="center"><a href="/vendas/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
                          <li class="divider"></li>
                          <li align="left">{% trans %} Locações {% endtrans %}</li>
-                         <li align="center"><a href="/locacaos/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/locacaos/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/locacaos/admin_locacao/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/locacaos/admin_locacao">{% trans %}Editar / Excluir{% endtrans %}</a></li>
                      </ul>
                     </li>
                     </li>
@@ -95,8 +96,8 @@
                          <li align="center"><a href="/vendas/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
                          <li class="divider"></li>
                          <li align="left">{% trans %} Locações {% endtrans %}</li>
-                         <li align="center"><a href="/locacaos/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/locacaos/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/locacaos/admin_locacao/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/locacaos/admin_locacao">{% trans %}Editar / Excluir{% endtrans %}</a></li>
                      </ul>
                     </li>
                     </li>

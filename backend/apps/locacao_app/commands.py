@@ -27,7 +27,7 @@ class LocacaoPublicForm(ModelForm):
 
 class LocacaoForm(ModelForm):
     """
-    Form used to save and update operations on app's admin page
+    Form used to save and update operations on app's admin_locacao page
     """
     _model_class = Locacao
     _include = [Locacao.numero_dormitorios, 
@@ -47,7 +47,7 @@ class LocacaoForm(ModelForm):
 
 class LocacaoDetailForm(ModelForm):
     """
-    Form used to show entity details on app's admin page
+    Form used to show entity details on app's admin_locacao page
     """
     _model_class = Locacao
     _include = [Locacao.numero_dormitorios, 
@@ -68,7 +68,7 @@ class LocacaoDetailForm(ModelForm):
 
 class LocacaoShortForm(ModelForm):
     """
-    Form used to show entity short version on app's admin page, mainly for tables
+    Form used to show entity short version on app's admin_locacao page, mainly for tables
     """
     _model_class = Locacao
     _include = [Locacao.numero_dormitorios, 

@@ -10,7 +10,7 @@ from routes.courses import admin
 
 @no_csrf
 def index():
-    return TemplateResponse({'save_path': router.to_path(save)},'courses/admin/form.html')
+    return TemplateResponse({'save_path': router.to_path(save)},'courses/admin_locacao/form.html')
 
 
 def save(_handler, course_id=None, **course_properties):
@@ -21,6 +21,6 @@ def save(_handler, course_id=None, **course_properties):
         context = {'errors': cmd.errors,
                    'course': cmd.form}
 
-        return TemplateResponse(context, 'courses/admin/form.html')
+        return TemplateResponse(context, 'courses/admin_locacao/form.html')
     _handler.redirect(router.to_path(admin))
 

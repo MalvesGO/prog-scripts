@@ -28,7 +28,7 @@ class VendaPublicForm(ModelForm):
 
 class VendaForm(ModelForm):
     """
-    Form used to save and update operations on app's admin page
+    Form used to save and update operations on app's admin_locacao page
     """
     _model_class = Venda
     _include = [Venda.numero_dormitorios, 
@@ -49,7 +49,7 @@ class VendaForm(ModelForm):
 
 class VendaDetailForm(ModelForm):
     """
-    Form used to show entity details on app's admin page
+    Form used to show entity details on app's admin_locacao page
     """
     _model_class = Venda
     _include = [Venda.numero_dormitorios, 
@@ -71,7 +71,7 @@ class VendaDetailForm(ModelForm):
 
 class VendaShortForm(ModelForm):
     """
-    Form used to show entity short version on app's admin page, mainly for tables
+    Form used to show entity short version on app's admin_locacao page, mainly for tables
     """
     _model_class = Venda
     _include = [Venda.numero_dormitorios, 
