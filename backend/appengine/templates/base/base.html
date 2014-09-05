@@ -33,8 +33,14 @@
     <![endif]-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    {% block css %}{% endblock %}
-    {% block js %}{% endblock %}
+    {% block css %}
+
+    {% endblock %}
+
+    {% block js %}
+        <script src="static/bootstrap/js/scripts.js"></script>
+        <script src="static/bootstrap/js/scripts2.js"></script>
+    {% endblock %}
 </head>
 <body>
 <div class="navbar-wrapper">
@@ -47,14 +53,53 @@
             </button>
             <a href="/" class="navbar-brand">Home</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
-                    <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %}Vendas{% endtrans %}</a></li>
-                    <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %}Locações{% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %} Vendas {% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %} Locações {% endtrans %}</a></li>
 
                 {% if _logged_user and 'ADMIN' in _logged_user.groups %}
-                    <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
+
+                    <li {{ 'class=active' if tab=='ADMIN' }}>
+                     <a href="/admin"  data-toggle="dropdown" class="dropdown-toggle">
+                        {% trans %}Admin{% endtrans %}
+                    <b class="caret"></b></a>
+
+                     <ul class="dropdown-menu">
+                         <li align="center"><a href="/admin">{% trans %}Painel de Administração{% endtrans %}</a></li>
+                         <li class="divider"></li>
+                         <li align="left">{% trans %} Vendas {% endtrans %}</li>
+                         <li align="center"><a href="/vendas/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/vendas/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li class="divider"></li>
+                         <li align="left">{% trans %} Locações {% endtrans %}</li>
+                         <li align="center"><a href="/locacaos/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/locacaos/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                     </ul>
+                    </li>
+                    </li>
+                {% endif %}
+
+                    {% if _logged_user and 'CORRETOR' in _logged_user.groups %}
+
+                    <li {{ 'class=active' if tab=='CORRETOR' }}>
+                     <a href="/corretor"  data-toggle="dropdown" class="dropdown-toggle">
+                        {% trans %}Corretor{% endtrans %}
+                    <b class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                         <li align="center"><a href="/corretor">{% trans %}Painel de Administração{% endtrans %}</a></li>
+                         <li class="divider"></li>
+                         <li align="left">{% trans %} Vendas {% endtrans %}</li>
+                         <li align="center"><a href="/vendas/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/vendas/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li class="divider"></li>
+                         <li align="left">{% trans %} Locações {% endtrans %}</li>
+                         <li align="center"><a href="/locacaos/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/locacaos/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                     </ul>
+                    </li>
+                    </li>
                 {% endif %}
 
                 {% endmacro %}
