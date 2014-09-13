@@ -13,7 +13,7 @@ def index(course_id):
     course = facade.get_course_cmd(course_id)()
     detail_form = facade.course_detail_form()
     context = {'save_path': router.to_path(save, course_id), 'course': detail_form.fill_with_model(course)}
-    return TemplateResponse(context, 'courses/admin_locacao/form.html')
+    return TemplateResponse(context, 'courses/admin/form.html')
 
 
 def save(_handler, course_id, **course_properties):
@@ -24,6 +24,6 @@ def save(_handler, course_id, **course_properties):
         context = {'errors': cmd.errors,
                    'course': cmd.form}
 
-        return TemplateResponse(context, 'courses/admin_locacao/form.html')
+        return TemplateResponse(context, 'courses/admin/form.html')
     _handler.redirect(router.to_path(admin))
 
