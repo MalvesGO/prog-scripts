@@ -54,7 +54,7 @@ class %(model)sPublicForm(ModelForm):
 
 class %(model)sForm(ModelForm):
     """
-    Form used to save and update operations on app's admin_locacao page
+    Form used to save and update operations on app's admin page
     """
     _model_class = %(model)s
     _include = [%(form_properties)s]
@@ -62,7 +62,7 @@ class %(model)sForm(ModelForm):
 
 class %(model)sDetailForm(ModelForm):
     """
-    Form used to show entity details on app's admin_locacao page
+    Form used to show entity details on app's admin page
     """
     _model_class = %(model)s
     _include = [%(full_properties)s]
@@ -70,7 +70,7 @@ class %(model)sDetailForm(ModelForm):
 
 class %(model)sShortForm(ModelForm):
     """
-    Form used to show entity short version on app's admin_locacao page, mainly for tables
+    Form used to show entity short version on app's admin page, mainly for tables
     """
     _model_class = %(model)s
     _include = [%(full_properties)s]
@@ -174,7 +174,7 @@ from tekton import router
 from gaecookie.decorator import no_csrf
 from gaepermission.decorator import login_not_required
 from %(app_name)s import facade
-from routes.%(app)ss import admin_locacao
+from routes.%(app)ss import admin
 
 
 @login_not_required
@@ -184,7 +184,7 @@ def index():
     %(model_underscore)ss = cmd()
     public_form = facade.%(model_underscore)s_public_form()
     %(model_underscore)s_public_dcts = [public_form.fill_with_model(%(model_underscore)s) for %(model_underscore)s in %(model_underscore)ss]
-    context = {'%(model_underscore)ss': %(model_underscore)s_public_dcts,'admin_path':router.to_path(admin_locacao)}
+    context = {'%(model_underscore)ss': %(model_underscore)s_public_dcts,'admin_path':router.to_path(admin)}
     return TemplateResponse(context)
 
 '''
@@ -194,7 +194,7 @@ from config.template_middleware import TemplateResponse
 from tekton import router
 from gaecookie.decorator import no_csrf
 from %(app_name)s import facade
-from routes.%(web_name)s.admin_locacao import new, edit
+from routes.%(web_name)s.admin import new, edit
 
 
 def delete(_handler, %(model_underscore)s_id):
@@ -230,12 +230,12 @@ from gaebusiness.business import CommandExecutionException
 from tekton import router
 from gaecookie.decorator import no_csrf
 from %(app_name)s import facade
-from routes.%(web_name)s import admin_locacao
+from routes.%(web_name)s import admin
 
 
 @no_csrf
 def index():
-    return TemplateResponse({'save_path': router.to_path(save)},'%(web_name)s/admin_locacao/form.html')
+    return TemplateResponse({'save_path': router.to_path(save)},'%(web_name)s/admin/form.html')
 
 
 def save(_handler, %(model_underscore)s_id=None, **%(model_underscore)s_properties):
@@ -246,8 +246,8 @@ def save(_handler, %(model_underscore)s_id=None, **%(model_underscore)s_properti
         context = {'errors': cmd.errors,
                    '%(model_underscore)s': cmd.form}
 
-        return TemplateResponse(context, '%(web_name)s/admin_locacao/form.html')
-    _handler.redirect(router.to_path(admin_locacao))
+        return TemplateResponse(context, '%(web_name)s/admin/form.html')
+    _handler.redirect(router.to_path(admin))
 
 '''
 
@@ -258,7 +258,7 @@ from gaebusiness.business import CommandExecutionException
 from tekton import router
 from gaecookie.decorator import no_csrf
 from %(app_name)s import facade
-from routes.%(web_name)s import admin_locacao
+from routes.%(web_name)s import admin
 
 
 @no_csrf
@@ -266,7 +266,7 @@ def index(%(model_underscore)s_id):
     %(model_underscore)s = facade.get_%(model_underscore)s_cmd(%(model_underscore)s_id)()
     detail_form = facade.%(model_underscore)s_detail_form()
     context = {'save_path': router.to_path(save, %(model_underscore)s_id), '%(model_underscore)s': detail_form.fill_with_model(%(model_underscore)s)}
-    return TemplateResponse(context, '%(web_name)s/admin_locacao/form.html')
+    return TemplateResponse(context, '%(web_name)s/admin/form.html')
 
 
 def save(_handler, %(model_underscore)s_id, **%(model_underscore)s_properties):
@@ -277,8 +277,8 @@ def save(_handler, %(model_underscore)s_id, **%(model_underscore)s_properties):
         context = {'errors': cmd.errors,
                    '%(model_underscore)s': cmd.form}
 
-        return TemplateResponse(context, '%(web_name)s/admin_locacao/form.html')
-    _handler.redirect(router.to_path(admin_locacao))
+        return TemplateResponse(context, '%(web_name)s/admin/form.html')
+    _handler.redirect(router.to_path(admin))
 
 '''
 
@@ -524,7 +524,7 @@ def _to_app_path(app):
 
 def init_facade(app, model):
     app_path = _to_app_path(app)
-    facade_script = os.path.join(app_path, 'facade_locacao.py')
+    facade_script = os.path.join(app_path, 'facade_locacaos.py')
     content = facade_code_for(app, model)
     _create_file_if_not_existing(facade_script, content)
     return content
@@ -543,7 +543,7 @@ def _to_web_admin_path(app):
 
 
 def _to_web_admin_path(app):
-    return os.path.join(_to_web_path(app), 'admin_locacao')
+    return os.path.join(_to_web_path(app), 'admin')
 
 
 def _to_template_path(app):
@@ -653,7 +653,7 @@ def init_html_templates(app):
     _create_dir_if_not_existing(template_path)
     base_dir = os.path.join(template_path, 'base.html')
     _create_file_if_not_existing(base_dir, content)
-    _create_dir_if_not_existing(os.path.join(template_path, 'admin_locacao'))
+    _create_dir_if_not_existing(os.path.join(template_path, 'admin'))
 
 
 def _to_label(label):
@@ -736,7 +736,7 @@ def init_home_html(app, model):
 
 def init_admin_home_html(app, model):
     app_template_path = _to_template_path(app)
-    home_script = os.path.join(app_template_path, 'admin_locacao', 'home.html')
+    home_script = os.path.join(app_template_path, 'admin', 'home.html')
     content = code_for_admin_home_html(app, model)
     _create_file_if_not_existing(home_script, content)
     return content
@@ -744,7 +744,7 @@ def init_admin_home_html(app, model):
 
 def init_form_html(app, model):
     app_template_path = _to_template_path(app)
-    form_script = os.path.join(app_template_path, 'admin_locacao', 'form.html')
+    form_script = os.path.join(app_template_path, 'admin', 'form.html')
     content = code_for_form_html(app, model)
     _create_file_if_not_existing(form_script, content)
     return content
@@ -754,7 +754,7 @@ def scaffold(app, model, *properties):
     init_app(app, model, *properties)
     _title('commands.py')
     print init_commands(app, model)
-    _title('facade_locacao.py')
+    _title('facade_locacaos.py')
     print init_facade(app, model)
 
     _title('creating routes folder')
@@ -762,13 +762,13 @@ def scaffold(app, model, *properties):
     _title('routes home.py')
     print init_home_script(app, model)
 
-    _title('creating routes.admin_locacao folder')
+    _title('creating routes.admin folder')
     init_web_admin(app)
-    _title('routes.admin_locacao home.py')
+    _title('routes.admin home.py')
     print init_admin_home_script(app, model)
-    _title('routes.admin_locacao new.py')
+    _title('routes.admin new.py')
     print init_new_script(app, model)
-    _title('routes.admin_locacao edit.py')
+    _title('routes.admin edit.py')
     print init_edit_script(app, model)
     _title('routes rest.py')
     print init_rest_script(app, model)
@@ -777,9 +777,9 @@ def scaffold(app, model, *properties):
     _title('templates/home.html')
     print init_home_html(app, model)
 
-    _title('templates/admin_locacao/home.html')
+    _title('templates/admin/home.html')
     print init_admin_home_html(app, model)
-    _title('templates/admin_locacao/form.html')
+    _title('templates/admin/form.html')
     print init_form_html(app, model)
 
 
