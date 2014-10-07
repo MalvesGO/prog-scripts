@@ -1,0 +1,95 @@
+{% extends 'clientes/base.html' %}
+
+{% block head %}
+    <script src="/static/bootstrap/js/jquery-1.2.6.pack.js"></script>
+    <script src="/static/bootstrap/js/jquery.maskedinput-1.1.4.pack.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('#cepInput').mask('99999-999');});
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% set cliente=cliente or None %}
+    {% set imovel=imovel or None %}
+    {% set errors=errors or None %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            <h1 class="text-center">Cliente {{ cliente.nome }}</h1>
+                <hr/>
+                <br/>
+
+                <div class="well">
+                    <h1 class="text-center">{% trans %}Cadastro de Imóvel{% endtrans %}</h1>
+
+                    <form action="{{ save_path }}" method="post" role="form" enctype="multipart/form-data">
+                        {{ csrf_input() }}
+                        <input type="hidden" value="{{ cliente.cliente_id }}"/>
+                        {{ form_input_d('CPF','cpf', cliente.cpf)}}
+                        {{ form_input_d('Nome do Responsável','nome', cliente.nome) }}
+                        {{ form_input_d('Telefone','telefone', cliente.telefone) }}
+                        {{ form_input_d('Celular','celular', cliente.celular) }}
+                        {{ form_input_d('E-mail','email', cliente.email) }}
+
+                        {{ form_input('CEP','cep', imovel.cep, errors.cep) }}
+                        {{ form_input('Endereço','endereco', imovel.endereco,  errors.endereco) }}
+                        {{ form_input('Número','numero', imovel.numero , errors.numero ) }}
+                        {{ form_input('Complemento','complemento', imovel.complemento, '') }}
+                        {{ form_input('Bairro','bairro', imovel.bairro,  errors.bairro) }}
+                        {{ form_input('Cidade','cidade', imovel.cidade,  errors.cidade) }}
+                        {{ form_select('Estado','estado', [imovel.estado, 'Acre', 'Alagoas',
+                                'Amazonas', 'Amapá', 'Bahia', 'Ceará', 'Distrito Federal',
+                                'Espirito Santo', 'Goiás', 'Maranhão', 'Minas Gerais',
+                                'Mato Grosso do Sul', 'Mato Grosso', 'Pará', 'Paraíba',
+                                'Pernambuco', 'Piauí', 'Paraná', 'Rio de Janeiro', 'Rio Grande do Norte',
+                                'Rondônia', 'Roraima', 'Rio Grande do Sul', 'Santa Catarina', 'Sergipe',
+                                'São Paulo', 'Tocantins'],errors.estado) }}
+                        {{ form_select('Categoria','categoria', [imovel.categoria, 'Residencial',
+                                'Comercial', 'Mista(Resid./Comercial', 'Industrial', 'Rural']
+                                ,errors.categoria) }}
+                        {{ form_select('Tipo','tipo', [imovel.tipo, 'Casa', 'Casa + Ponto Comercial',
+                                'Apartamento', 'Terreno', 'Galpão', 'Sala', 'Sítio', 'Chácara']
+                                ,errors.tipo) }}
+                        {{ form_select('Subtipo','subtipo', [imovel.subtipo, 'Casa Térrea',
+                                'Casa Sobrado', 'Apartamento com Elevador',
+                                'Apartamento sem Elevador']
+                                ,errors.subtipo) }}
+                        {{ form_select('Tipo de Transação','transacao', [imovel.transacao,
+                                'Venda', 'Locação']
+                                ,errors.transacao) }}
+                        {{ form_input('Área Útil','area_util', imovel.area_util,  errors.area_util) }}
+                        {{ form_input('Área do Terreno','area_terreno', imovel.area_terreno,  errors.terreno) }}
+
+                        {{ form_select('Número de Vagas','vagas', [imovel.vagas,
+                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                                ,errors.vagas) }}
+                        {{ form_select('Número de Dormitórios','dormitorios', [imovel.dormitorios,
+                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                                ,errors.dormitorios) }}
+                        {{ form_select('Número de Suítes','suites', [imovel.suites,
+                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                                ,errors.suites) }}
+                        {{ form_select('Número de Salas','salas', [imovel.salas,
+                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                                ,errors.salas) }}
+                        {{ form_select('Número de Copas','copas', [imovel.copas,
+                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                                ,errors.copas) }}
+                        {{ form_select('Número de Cozinhas','cozinhas', [imovel.cozinhas,
+                                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                                ,errors.cozinhas) }}
+                        {{ form_textarea('Descrição','descricao', imovel.descricao,  '') }}
+                        {{ form_input('Valor','valor', imovel.valor,  errors.valor) }}
+                        {{ form_input('Valor do Condomínio','valor_condominio', imovel.valor_condominio,  '') }}
+
+                        <button type="submit" class="btn btn-success" align="center">
+                            {% trans %}Save{% endtrans %}</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

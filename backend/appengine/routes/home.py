@@ -2,6 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 import random
 from config.template_middleware import TemplateResponse
+from routes.clientes.home import Imovel, ImovelFormTable
 from tekton import router
 from gaecookie.decorator import no_csrf
 from gaepermission.decorator import login_not_required
@@ -13,17 +14,12 @@ from venda_app import facade
 @no_csrf
 def index():
 
-    cmd = facade.list_vendas_cmd()
-    vendas = cmd()
-    public_form = facade.venda_public_form()
-    venda_public_dcts = [public_form.fill_with_model(venda) for venda in vendas]
+    query = Imovel.query().order()
+    imovel_lista = query.fetch()
+    imovel_form=ImovelFormTable()
+    imovel_lista=[imovel_form.fill_with_model(imovel) for imovel in imovel_lista]
 
-    cmd_locacao = facade_locacaos.list_locacaos_cmd()
-    locacaos = cmd_locacao()
-    public_form_locacao = facade_locacaos.locacao_public_form()
-    locacao_public_dcts = [public_form_locacao.fill_with_model(locacao) for locacao in locacaos]
+    contexto = {'imovel_lista':imovel_lista}
 
-    context = {'vendas': venda_public_dcts, 'locacaos': locacao_public_dcts }
-
-    return TemplateResponse(context)
+    return TemplateResponse(contexto)
 

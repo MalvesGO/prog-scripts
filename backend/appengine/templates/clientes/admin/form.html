@@ -1,0 +1,58 @@
+{% extends 'clientes/base.html' %}
+
+{% block head %}
+    <script src="/static/bootstrap/js/jquery-1.2.6.pack.js"></script>
+    <script src="/static/bootstrap/js/jquery.maskedinput-1.1.4.pack.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('#cpfInput').mask('999.999.999-99');
+        $('#nascimentoInput').mask('99/99/9999');
+        $('#cepInput').mask('99999-999');});
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% set cliente=cliente or None %}
+    {% set errors=errors or None %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <br/>
+
+                <div class="well">
+                    <h1 class="text-center">{% trans %}Cadastro de Cliente{% endtrans %}</h1>
+
+                    <form action="{{ save_path }}" method="post" role="form">
+                        {{ csrf_input() }}
+                        {{ form_input(_('CPF'),'cpf',cliente.cpf,errors.cpf) }}
+                        {{ form_input(_('Nome'),'nome',cliente.nome,errors.nome) }}
+                        {{ form_input(_('RG'),'rg',cliente.rg,errors.rg) }}
+                        {{ form_input(_('Data de Nascimento'),'nascimento',cliente.nascimento,errors.nascimento) }}
+                        {{ form_input(_('Nacionalidade'),'nacionalidade',cliente.nacionalidade,errors.nacionalidade) }}
+                        {{ form_input(_('Estado Civil'),'estado_civil',cliente.estado_civil,errors.estado_civil) }}
+                        {{ form_input(_('Profissão'),'profissao',cliente.profissao,errors.profissao) }}
+                        {{ form_input(_('Complemento'),'complemento',cliente.complemento,errors.complemento) }}
+                        {{ form_input(_('CEP'),'cep',cliente.cep,errors.cep) }}
+                        {{ form_input(_('Endereço'),'endereco',cliente.endereco,errors.endereco) }}
+                        {{ form_input(_('Número'),'numero',cliente.numero,errors.numero) }}
+                        {{ form_input(_('Bairro'),'bairro',cliente.bairro,errors.bairro) }}
+                        {{ form_input(_('Cidade'),'cidade',cliente.cidade,errors.cidade) }}
+                        {{ form_select(_('Estado'),'estado', [cliente.estado, 'Acre', 'Alagoas',
+                                'Amazonas', 'Amapá', 'Bahia', 'Ceará', 'Distrito Federal',
+                                'Espirito Santo', 'Goiás', 'Maranhão', 'Minas Gerais',
+                                'Mato Grosso do Sul', 'Mato Grosso', 'Pará', 'Paraíba',
+                                'Pernambuco', 'Piauí', 'Paraná', 'Rio de Janeiro', 'Rio Grande do Norte',
+                                'Rondônia', 'Roraima', 'Rio Grande do Sul', 'Santa Catarina', 'Sergipe',
+                                'São Paulo', 'Tocantins'],errors.estado) }}
+                        {{ form_input(_('Telefone'),'telefone',cliente.telefone,errors.telefone) }}
+                        {{ form_input(_('Celular'),'celular',cliente.celular,errors.celular) }}
+                        {{ form_input(_('E-mail'),'email',cliente.email,errors.email) }}
+                        <button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'clientes/base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{% trans %}Lista de Imóveis {% endtrans %}  </h1>
+                <hr/>
+                <a href="{{ new_imovel }}" class="btn btn-success">{% trans %}Adicionar Imóvel{% endtrans %}</a>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th/>
+
+                        <th>{% trans %}Código{% endtrans %}</th>
+                        <th>{% trans %}CEP{% endtrans %}</th>
+                        <th>{% trans %}Endereço{% endtrans %}</th>
+                        <th>{% trans %}Bairro{% endtrans %}</th>
+                        <th>{% trans %}Cidade{% endtrans %}</th>
+                        <th>{% trans %}Estado{% endtrans %}</th>
+                        <th>{% trans %}Categoria{% endtrans %}</th>
+                        <th>{% trans %}Tipo{% endtrans %}</th>
+                        <th>{% trans %}Tipo de Transação{% endtrans %}</th>
+                        <th>{% trans %}Área Útil{% endtrans %}</th>
+                        <th>{% trans %}Área Terreno{% endtrans %}</th>
+                        <th>{% trans %}Valor{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for imovel in imovel_lista %}
+                        <tr>
+                            <td><a href="{{ imovel.edit_path }}" class="btn btn-success btn-sm"><i
+                                    class="glyphicon glyphicon-pencil"></i></a></td>
+                            <td>{{ imovel.key.id() }}</td>
+                            <td>{{ imovel.cep }}</td>
+                            <td>{{ imovel.endereco }}</td>
+                            <td>{{ imovel.bairro }}</td>
+                            <td>{{ imovel.cidade }}</td>
+                            <td>{{ imovel.estado }}</td>
+                            <td>{{ imovel.categoria }}</td>
+                            <td>{{ imovel.tipo }}</td>
+                            <td>{{ imovel.transacao }}</td>
+                            <td>{{ imovel.area_util }}</td>
+                            <td>{{ imovel.area_terreno }}</td>
+                            <td>{{ imovel.valor }}</td>
+                            <td>
+                                <form action="{{ imovel.remove_path }}" method="post" onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
+                                    {{ csrf_input() }}
+                                    <button class="btn btn-danger btn-sm"><i
+                                            class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

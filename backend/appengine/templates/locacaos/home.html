@@ -11,14 +11,15 @@
                 {% endif %}-->
 
                 <div class="row">
-                    {% for locacao in locacaos %}
+                    {% for imovel in imovel_lista %}
+                        {% if imovel.transacao=='Locação' %}
 		                <div class="col-sm-6 col-md-4">
 
                             <div class="thumbnail">
 						        <img alt="300x300" src="http://lorempixel.com/600/400/city" />
 
                                 <div class="caption">
-		                	        <h2> {{ locacao.tipo_imovel }} </h2>
+		                	        <h2> {{ imovel.tipo }} </h2>
 			                        <p>
                                     <table class="table table-striped">
                                         <thead>
@@ -26,21 +27,26 @@
                                            <td>
                                            <img src="static/img/cama.ico" width="20" height="20">
                                            <strong>{% trans %}Dormitórios{% endtrans %}</strong></td>
-				                           <td>{{ locacao.numero_dormitorios }}</td>
+				                           <td>{{ imovel.dormitorios }}</td>
                                         </tr>
 
                                         <tr>
                                            <td>
                                            <img src="static/img/carro.ico" width="20" height="20">
                                            <strong>{% trans %}Vagas para Carro{% endtrans %}</strong> </td>
-				                           <td>{{ locacao.vaga_garagem }}</td>
+				                           <td>{{ imovel.vagas }}</td>
                                         </tr>
 
                                         <tr>
                                            <td>
                                            <span class="glyphicon glyphicon-home"></span>
                                            <strong>{% trans %}Área do Imóvel{% endtrans %}</strong></td>
-				                           <td>{{ locacao.area_total }} m²</td>
+				                           <td>{{ imovel.area_terreno }} m²</td>
+                                        </tr>
+
+                                        <tr>
+                                           <td><strong>{% trans %}R${% endtrans %}</strong></td>
+				                           <td>{{ imovel.valor }}</td>
                                         </tr>
 
                                         </thead>
@@ -56,7 +62,7 @@
 	                        </div>
 
                         </div>
-
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

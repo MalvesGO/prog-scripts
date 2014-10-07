@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from config.template_middleware import TemplateResponse
+from gaepermission.decorator import permissions
+from permission_app.model import ADMIN, CORRETOR
 from tekton import router
 from gaecookie.decorator import no_csrf
 from locacao_app import facade_locacaos
@@ -11,7 +13,7 @@ def delete(_handler, locacao_id):
     facade_locacaos.delete_locacao_cmd(locacao_id)()
     _handler.redirect(router.to_path(index))
 
-
+@permissions(ADMIN, CORRETOR)
 @no_csrf
 def index():
     cmd = facade_locacaos.list_locacaos_cmd()

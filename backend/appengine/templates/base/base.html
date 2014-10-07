@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+
 {% macro csrf_input() %}
-    <input type="hidden" value="{{ _csrf_code }}" name="_csrf_code"/>
+    <input type="hidden" value="{{ _csrf_code }}" name="_csrf_code" xmlns="http://www.w3.org/1999/html"/>
 {% endmacro %}
+
 {% macro form_input(label,property,value,error_msg) %}
     <div class="form-group {{ ' has-error' if error_msg }}">
         <label for="{{ property }}Input"
@@ -11,16 +13,52 @@
         {% if error_msg %}<span class="help-block">{{ error_msg }}</span>{% endif %}
     </div>
 {% endmacro %}
+
+{% macro form_select(label,property, value=[] ,error_msg) %}
+    <div class="form-group {{ ' has-error' if error_msg }}">
+        <label for="{{ property }}Input"
+               class="control-label">{{ label }} </label>
+        <select id="{{ property }}Input" class="form-control" name="{{ property }}">
+            {% for v in value %}
+                <option value="{{ v }}">{{ v }}</option>
+            {% endfor %}
+        </select>
+        {% if error_msg %}<span class="help-block">{{ error_msg }}</span>{% endif %}
+    </div>
+{% endmacro %}
+
+{% macro form_input_d(label,property,value) %}
+    <div class="form-group">
+        <label for="{{ property }}Input"
+               class="control-label">{{ label }} </label>
+        <input id="{{ property }}Input" type="text" class="form-control" name="{{ property }}"
+              value="{{ value }}" disabled />
+    </div>
+{% endmacro %}
+
+{% macro form_textarea(label,property,value,error_msg) %}
+    <div class="form-group {{ ' has-error' if error_msg }}">
+        <label for="{{ property }}Input"
+               class="control-label">{{ label }} </label>
+        <textarea id="{{ property }}Textarea"  class="form-control" rows="4" name="{{ property }}">
+               {{ value }} </textarea>
+        {% if error_msg %}<span class="help-block">{{ error_msg }}</span>{% endif %}
+    </div>
+{% endmacro %}
+
 <html>
 <head lang="en">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}Imóvel Certo Ltda.{% endblock %}</title>
+
     <!-- Bootstrap -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/default.css" rel="stylesheet">
+    <!--<link href="/static/bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/default.css" rel="stylesheet">-->
     <style>
         .pad8 {
             margin: 8px 15px;
@@ -33,15 +71,24 @@
     <![endif]-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    {% block css %}
+    {% block css %}{% endblock %}
 
-    {% endblock %}
+    <script src="/static/bootstrap/js/scripts.js"></script>
+    <script src="/static/bootstrap/js/scripts2.js"></script>
+    <!--<script src="/static/bootstrap/js/jquery-1.2.6.pack.js"></script>
+    <script src="/static/bootstrap/js/jquery.maskedinput-1.1.4.pack.js"></script>
+    <!--<script src="/static/bootstrap/js/jquery.min.js"></script>
+    <!--<script src="/static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+    <!--<script src="https://code.jquery.com/jquery.js"></script>-->
+    <!--<script src="/static/bootstrap/js/jasny-bootstrap.min.js"></script>-->
 
-    {% block js %}
-        <script src="/static/bootstrap/js/scripts.js"></script>
-        <script src="/static/bootstrap/js/scripts2.js"></script>
-    {% endblock %}
+
+    {% block js %}{% endblock %}
+
+    {% block head %}{% endblock %}
+
 </head>
+
 <body>
 <div class="navbar-wrapper">
     <div class="navbar navbar-inverse navbar-static-top">
@@ -59,7 +106,6 @@
                     <li {{ 'class=active' if tab=='VENDAS' }}><a href="/vendas">{% trans %} Vendas {% endtrans %}</a></li>
                     <li {{ 'class=active' if tab=='LOCACAOS' }}><a href="/locacaos">{% trans %} Locações {% endtrans %}</a></li>
                     <li {{ 'class=active' if tab=='SOBRE' }}><a href="/sobre">{% trans %} Sobre {% endtrans %}</a></li>
-
                 {% if _logged_user and 'ADMIN' in _logged_user.groups %}
 
                     <li {{ 'class=active' if tab=='ADMIN' }}>
@@ -70,17 +116,16 @@
                      <ul class="dropdown-menu">
                          <li align="center"><a href="/admin">{% trans %}Painel de Administração{% endtrans %}</a></li>
                          <li class="divider"></li>
-                         <li align="left">{% trans %} Vendas {% endtrans %}</li>
-                         <li align="center"><a href="/vendas/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/vendas/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes">{% trans %}Imóveis{% endtrans %}</a></li>
                          <li class="divider"></li>
-                         <li align="left">{% trans %} Locações {% endtrans %}</li>
-                         <li align="center"><a href="/locacaos/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/locacaos/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li align="left">{% trans %} Clientes {% endtrans %}</li>
+                         <li align="center"><a href="/clientes/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+
                      </ul>
                     </li>
                     </li>
-                {% endif %}
+                   {% endif %}
 
                     {% if _logged_user and 'CORRETOR' in _logged_user.groups %}
 
@@ -88,20 +133,15 @@
                      <a href="/corretor"  data-toggle="dropdown" class="dropdown-toggle">
                         {% trans %}Corretor{% endtrans %}
                     <b class="caret"></b></a>
+
                      <ul class="dropdown-menu">
                          <li align="center"><a href="/corretor">{% trans %}Painel de Administração{% endtrans %}</a></li>
                          <li class="divider"></li>
-                         <li align="left">{% trans %} Vendas {% endtrans %}</li>
-                         <li align="center"><a href="/vendas/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/vendas/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
-                         <li class="divider"></li>
-                         <li align="left">{% trans %} Locações {% endtrans %}</li>
-                         <li align="center"><a href="/locacaos/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/locacaos/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes">{% trans %}Clientes e Imóveis{% endtrans %}</a></li>
                      </ul>
                     </li>
                     </li>
-                {% endif %}
+                        {% endif %}
 
                 {% endmacro %}
                 {% block tabs %}
@@ -120,8 +160,7 @@
                     </form>
 
                 {% else %}
-                    <a class="btn btn-success" href="{{ _login_path }}">{% trans %}Login{% endtrans %}</a>
-
+                     <a class="btn btn-success" href="{{ _login_path }}">{% trans %}Login{% endtrans %}</a>
                 {% endif %}
 
             </div>

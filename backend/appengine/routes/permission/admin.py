@@ -18,6 +18,7 @@ def index():
 
 
 @permissions(ADMIN)
+@no_csrf
 def list_users(email_prefix='', cursor=None):
     cmd = facade.find_users_by_email_starting_with(email_prefix, cursor)
     users = cmd.execute().result
@@ -34,5 +35,6 @@ def list_users(email_prefix='', cursor=None):
 
 
 @permissions(ADMIN)
+@no_csrf
 def update(user_id, groups):
     facade.update_user_groups(user_id, groups).execute()

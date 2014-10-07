@@ -524,7 +524,7 @@ def _to_app_path(app):
 
 def init_facade(app, model):
     app_path = _to_app_path(app)
-    facade_script = os.path.join(app_path, 'facade_locacaos.py')
+    facade_script = os.path.join(app_path, 'facade.py')
     content = facade_code_for(app, model)
     _create_file_if_not_existing(facade_script, content)
     return content
@@ -579,7 +579,7 @@ def code_for_public_home_script(app, model):
 
 def init_home_script(app, model):
     app_web_path = _to_web_path(app)
-    home_script = os.path.join(app_web_path, 'home.py')
+    home_script = os.path.join(app_web_path, 'home_old.py')
     content = code_for_public_home_script(app, model)
     _create_file_if_not_existing(home_script, content)
     return content
@@ -587,7 +587,7 @@ def init_home_script(app, model):
 
 def init_admin_home_script(app, model):
     app_web_path = _to_web_admin_path(app)
-    home_script = os.path.join(app_web_path, 'home.py')
+    home_script = os.path.join(app_web_path, 'home_old.py')
     content = code_for_home_script(app, model)
     _create_file_if_not_existing(home_script, content)
     return content
@@ -754,17 +754,17 @@ def scaffold(app, model, *properties):
     init_app(app, model, *properties)
     _title('commands.py')
     print init_commands(app, model)
-    _title('facade_locacaos.py')
+    _title('facade.py')
     print init_facade(app, model)
 
     _title('creating routes folder')
     init_web(app)
-    _title('routes home.py')
+    _title('routes home_old.py')
     print init_home_script(app, model)
 
     _title('creating routes.admin folder')
     init_web_admin(app)
-    _title('routes.admin home.py')
+    _title('routes.admin home_old.py')
     print init_admin_home_script(app, model)
     _title('routes.admin new.py')
     print init_new_script(app, model)
