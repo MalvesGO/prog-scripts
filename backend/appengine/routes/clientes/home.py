@@ -6,11 +6,12 @@ from config.template_middleware import TemplateResponse
 from gaecookie.decorator import no_csrf
 from gaeforms.ndb.form import ModelForm
 from gaegraph.model import Arc, Node
-from gaepermission.decorator import login_not_required
+from gaepermission.decorator import login_not_required, permissions
+from permission_app.model import ADMIN, CORRETOR
 from tekton import router
 from tekton.gae.middleware.redirect import RedirectResponse
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 @no_csrf
 def index():
     query = Cliente.query().order(Cliente.nome)
@@ -21,7 +22,7 @@ def index():
     return TemplateResponse(contexto)
 
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 @no_csrf
 def exibir(cliente_id):
     cliente = Cliente.get_by_id(int(cliente_id))
@@ -44,7 +45,7 @@ def exibir(cliente_id):
     return TemplateResponse(contexto, 'clientes/exibir_imoveis.html')
 
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 @no_csrf
 def novo(cliente_id):
     cliente = Cliente.get_by_id(int(cliente_id))
@@ -62,7 +63,7 @@ def novo(cliente_id):
     return TemplateResponse(contexto, 'clientes/imoveis.html')
 
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 def salvar(cliente_id, **propriedades):
     cliente_chave = Cliente.get_by_id(int(cliente_id))
     imovel_form = ImovelForm(**propriedades)
@@ -80,7 +81,7 @@ def salvar(cliente_id, **propriedades):
         cliente_imovel.put()
         return RedirectResponse(router.to_path(index))
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 @no_csrf
 def form_edicao(imovel_id):
     imovel_id = int(imovel_id)
@@ -91,7 +92,7 @@ def form_edicao(imovel_id):
                 'imovel': imovel_dct}
     return TemplateResponse(contexto, 'clientes/edit_imoveis.html')
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 def editar(imovel_id, **propriedades):
     imovel_form = ImovelForm(**propriedades)
     errors = imovel_form.validate()
@@ -105,7 +106,7 @@ def editar(imovel_id, **propriedades):
     imovel.put()
     return RedirectResponse(router.to_path(index))
 
-@login_not_required
+@permissions(ADMIN, CORRETOR)
 def deletar(imovel_id):
     imovel_chave = ndb.Key(Imovel, int(imovel_id))
     query = ClienteImovel.find_origins(imovel_chave)
