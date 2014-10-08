@@ -1,4 +1,4 @@
-{% extends 'clientes/base.html' %}
+{% extends 'imoveis/base.html' %}
 
 {% block head %}
     <script src="/static/bootstrap/js/jquery-1.2.6.pack.js"></script>
@@ -16,11 +16,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                    <div class="well">
+
+                <div class="well">
                     <h1 class="text-center">{% trans %}Cadastro de Imóvel{% endtrans %}</h1>
 
                     <form action="{{ save_path }}" method="post" role="form" enctype="multipart/form-data">
                         {{ csrf_input() }}
+                        <input type="hidden" value="{{ cliente.cliente_id }}"/>
+                        {{ form_input_d('CPF','cpf', cliente.cpf)}}
+                        {{ form_input_d('Nome do Responsável','nome', cliente.nome) }}
+                        {{ form_input_d('Telefone','telefone', cliente.telefone) }}
+                        {{ form_input_d('Celular','celular', cliente.celular) }}
+                        {{ form_input_d('E-mail','email', cliente.email) }}
 
                         {{ form_input('CEP','cep', imovel.cep, errors.cep) }}
                         {{ form_input('Endereço','endereco', imovel.endereco,  errors.endereco) }}

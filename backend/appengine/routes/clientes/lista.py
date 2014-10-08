@@ -8,12 +8,11 @@ from permission_app.model import ADMIN, CORRETOR
 from routes.imoveis.home import exibir
 from tekton import router
 
+
 @permissions(ADMIN, CORRETOR)
 @no_csrf
 def index():
     query = Cliente.query().order(Cliente.nome)
     clientes = query.fetch()
-    for cliente in clientes:
-        cliente.exibir_path = router.to_path(exibir, cliente.key.id())
     contexto = {'clientes': clientes}
     return TemplateResponse(contexto)

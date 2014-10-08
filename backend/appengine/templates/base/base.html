@@ -40,8 +40,7 @@
     <div class="form-group {{ ' has-error' if error_msg }}">
         <label for="{{ property }}Input"
                class="control-label">{{ label }} </label>
-        <textarea id="{{ property }}Textarea"  class="form-control" rows="4" name="{{ property }}">
-               {{ value }} </textarea>
+        <textarea id="{{ property }}Textarea"  class="form-control" rows="4" name="{{ property }}">{{ value }}</textarea>
         {% if error_msg %}<span class="help-block">{{ error_msg }}</span>{% endif %}
     </div>
 {% endmacro %}
@@ -116,12 +115,14 @@
                      <ul class="dropdown-menu">
                          <li align="center"><a href="/admin">{% trans %}Painel de Administração{% endtrans %}</a></li>
                          <li class="divider"></li>
-                         <li align="center"><a href="/clientes">{% trans %}Imóveis{% endtrans %}</a></li>
-                         <li class="divider"></li>
                          <li align="left">{% trans %} Clientes {% endtrans %}</li>
                          <li align="center"><a href="/clientes/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/clientes/admin">{% trans %}Editar / Excluir{% endtrans %}</a></li>
-
+                         <li align="center"><a href="/clientes/lista">{% trans %}Listar Todos{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes/admin">{% trans %}Editar | Excluir{% endtrans %}</a></li>
+                         <li class="divider"></li>
+                         <li align="left">{% trans %} Imóveis {% endtrans %}</li>
+                         <li align="center"><a href="/clientes">{% trans %}Cadastrar | Editar | Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/imoveis/">{% trans %}Listar Todos{% endtrans %}</a></li>
                      </ul>
                     </li>
                     </li>
@@ -137,7 +138,14 @@
                      <ul class="dropdown-menu">
                          <li align="center"><a href="/corretor">{% trans %}Painel de Administração{% endtrans %}</a></li>
                          <li class="divider"></li>
-                         <li align="center"><a href="/clientes">{% trans %}Clientes e Imóveis{% endtrans %}</a></li>
+                         <li align="left">{% trans %} Clientes {% endtrans %}</li>
+                         <li align="center"><a href="/clientes/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes/lista">{% trans %}Listar Todos{% endtrans %}</a></li>
+                         <li class="divider"></li>
+                         <li align="left">{% trans %} Imóveis {% endtrans %}</li>
+                         <li align="center"><a href="/clientes">{% trans %}Cadastrar | Editar | Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/imoveis/">{% trans %}Listar Todos{% endtrans %}</a></li>
+
                      </ul>
                     </li>
                     </li>
@@ -168,8 +176,10 @@
     </div>
 </div>
 {% block body %}{% endblock %}
+
 <div class="footer">
     <div class="container">
+        <hr/>
         <p class="text-muted text-right">Imóvel Certo Full-Stack: <a target="_blank" href="https://github.com/barbaralluz/prog-scripts">Git Hub</a></p>
     </div>
 </div>

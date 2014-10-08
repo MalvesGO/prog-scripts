@@ -3,8 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from config.template_middleware import TemplateResponse
 from gaepermission.decorator import permissions
 from permission_app.model import ADMIN
-from routes import imoveis
-from routes.imoveis import Imovel, ImovelFormTable
 from tekton import router
 from gaecookie.decorator import no_csrf
 from cliente_app import facade
