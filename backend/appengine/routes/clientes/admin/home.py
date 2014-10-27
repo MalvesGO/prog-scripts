@@ -16,20 +16,6 @@ def delete(_handler, cliente_id):
 @permissions(ADMIN)
 @no_csrf
 def index():
-    cmd = facade.list_clientes_cmd()
-    clientes = cmd()
-    edit_path = router.to_path(edit)
-    delete_path = router.to_path(delete)
-    short_form = facade.cliente_short_form()
-
-    def short_cliente_dict(cliente):
-        cliente_dct = short_form.fill_with_model(cliente)
-        cliente_dct['edit_path'] = router.to_path(edit_path, cliente_dct['id'])
-        cliente_dct['delete_path'] = router.to_path(delete_path, cliente_dct['id'])
-        return cliente_dct
-
-    short_clientes = [short_cliente_dict(cliente) for cliente in clientes]
-    context = {'clientes': short_clientes,
-               'new_path': router.to_path(new)}
+    context = {'new_path': router.to_path(new)}
     return TemplateResponse(context)
 

@@ -1,7 +1,7 @@
 {% extends 'clientes/base.html' %}
 
 {% block js %}
-    <script type="text/javascript" src="/static/js/clientes.js"></script>
+    <script type="text/javascript" src="/static/js/clientes_corretor.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -180,27 +180,21 @@
                     </tr>
                     </thead>
                     <tbody id="corpo-tabela">
-                    {% for cliente in clientes %}
+
+                    <!--{% for cliente in clientes %}
                         <tr>
-                            <td><a href="{{ cliente.edit_path }}" class="btn btn-success btn-sm"><i
-                                    class="glyphicon glyphicon-pencil"></i></a></td>
                             <td>{{ cliente.id }}</td>
                             <td>{{ cliente.cpf }}</td>
-                            <td>{{ cliente.nome }}</td>
-                            <td>{{ cliente.rg }}</td>
+                            <td>{{ cliente.nome }}</td>            -- NÃO ESTÁ SENDO UTILIZADA, ESTÁ SENDO GERADA POR
+                            <td>{{ cliente.rg }}</td>                               JAVASCRIPT
                             <td>{{ cliente.telefone }}</td>
                             <td>{{ cliente.celular }}</td>
                             <td>{{ cliente.email }}</td>
                             <td>
-                                <form action="{{ cliente.delete_path }}" method="post"
-                                      onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
-                                    {{ csrf_input() }}
-                                    <button class="btn btn-danger btn-sm"><i
-                                            class="glyphicon glyphicon-trash"></i></button>
-                                </form>
                             </td>
                         </tr>
-                    {% endfor %}
+                    {% endfor %}-->
+
                     </tbody>
                 </table>
             </div>

@@ -74,6 +74,7 @@
 
     <script src="/static/bootstrap/js/scripts.js"></script>
     <script src="/static/bootstrap/js/scripts2.js"></script>
+    <script type="application/javascript" src="/static/js/jquery-1.11.1.min.jsjquery-1.11.1.min.js"></script>
     <!--<script src="/static/bootstrap/js/jquery-1.2.6.pack.js"></script>
     <script src="/static/bootstrap/js/jquery.maskedinput-1.1.4.pack.js"></script>
     <!--<script src="/static/bootstrap/js/jquery.min.js"></script>
@@ -116,13 +117,12 @@
                          <li align="center"><a href="/admin">{% trans %}Painel de Administração{% endtrans %}</a></li>
                          <li class="divider"></li>
                          <li align="left">{% trans %} Clientes {% endtrans %}</li>
-                         <li align="center"><a href="/clientes/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/clientes/lista">{% trans %}Listar Todos{% endtrans %}</a></li>
-                         <li align="center"><a href="/clientes/admin">{% trans %}Editar | Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes/admin">{% trans %}Cadastrar | Editar | Excluir{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes/lista">{% trans %}Detalhes{% endtrans %}</a></li>
                          <li class="divider"></li>
                          <li align="left">{% trans %} Imóveis {% endtrans %}</li>
                          <li align="center"><a href="/clientes">{% trans %}Cadastrar | Editar | Excluir{% endtrans %}</a></li>
-                         <li align="center"><a href="/imoveis/">{% trans %}Listar Todos{% endtrans %}</a></li>
+                         <li align="center"><a href="/imoveis/">{% trans %}Detalhes{% endtrans %}</a></li>
                      </ul>
                     </li>
                     </li>
@@ -139,8 +139,7 @@
                          <li align="center"><a href="/corretor">{% trans %}Painel de Administração{% endtrans %}</a></li>
                          <li class="divider"></li>
                          <li align="left">{% trans %} Clientes {% endtrans %}</li>
-                         <li align="center"><a href="/clientes/admin/new">{% trans %}Cadastrar{% endtrans %}</a></li>
-                         <li align="center"><a href="/clientes/lista">{% trans %}Listar Todos{% endtrans %}</a></li>
+                         <li align="center"><a href="/clientes/lista_new">{% trans %}Cadastrar | Listar Todos{% endtrans %}</a></li>
                          <li class="divider"></li>
                          <li align="left">{% trans %} Imóveis {% endtrans %}</li>
                          <li align="center"><a href="/clientes">{% trans %}Cadastrar | Editar | Excluir{% endtrans %}</a></li>
