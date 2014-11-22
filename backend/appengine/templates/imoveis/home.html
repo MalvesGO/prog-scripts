@@ -40,9 +40,11 @@
                             <td>{{ imovel.area_terreno }}</td>
                             <td>{{ imovel.valor }}</td>
                             <td>
-                            <a href="{{ imovel.detalhes }}" class="btn btn-success btn-sm"><i
-                                    class="glyphicon glyphicon-plus"></i>
-                                {% trans %}Detalhes{% endtrans %}</a>
+                            <form action="{{ imovel.remove_path }}" method="post" onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
+                                    {{ csrf_input() }}
+                                    <button class="btn btn-danger btn-sm"><i
+                                            class="glyphicon glyphicon-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}

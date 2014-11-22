@@ -105,10 +105,12 @@ def editar(cliente_id, imovel_id, **propriedades):
 @permissions(ADMIN, CORRETOR)
 def deletar(cliente_id, imovel_id):
     imovel_chave = ndb.Key(Imovel, int(imovel_id))
+    futuro = imovel_chave.delete_async()
     query = ClienteImovel.find_origins(imovel_chave)
     chaves_a_serem_apagadas = query.fetch(keys_only=True)
     chaves_a_serem_apagadas.append(imovel_chave)
     ndb.delete_multi(chaves_a_serem_apagadas)
+    futuro.get_result()
     return RedirectResponse(router.to_path(exibir, cliente_id))
 
 # Modelo e formulário

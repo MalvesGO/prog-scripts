@@ -1,40 +1,78 @@
-{% extends 'base/base.html' %}
+{% extends 'clientes/base.html' %}
+
+{% block js %}
+
+    <script type="text/javascript" src="/static/cliente/js/clientes_corretor.js"></script>
+
+    <script type="text/javascript">
+
+        var clienteServico = angular.module('cliente-servico', []);
+
+        clienteServico.factory('ClienteAPI', function ($http) {
+            return {
+                salvar: function (cliente) {
+                    return $http.post('{{ salvar_path }}', cliente);
+                },
+                editar: function (cliente) {
+                    return $http.post('{{ editar_path }}', cliente);
+                },
+                listar: function () {
+                    return $http.post('{{ listar_path }}');
+                },
+                deletar: function (id) {
+                    return $http.post('{{ deletar_path }}', {'id': id});
+                }
+            }
+        });
+
+        function ClienteControlador($scope, ClienteAPI) {
+            $scope.mostrarFormFlag = false;
+            $scope.clientes = [];
+
+            ClienteAPI.listar().success(function (clientes) {
+                $scope.clientes = clientes;
+            });
+
+            $scope.mostrarOuEsconderForm = function () {
+                $scope.mostrarFormFlag = !$scope.mostrarFormFlag;
+            };
+
+            $scope.adicionarCliente = function (cliente) {
+                $scope.clientes.unshift(cliente);
+            }
+
+            $scope.deletarCliente = function (index) {
+                $scope.clientes.splice(index,1);
+            }
+
+        }
+
+    </script>
+{% endblock %}
 
 {% block body %}
     <div class="container">
-        <div class="row">
+        <div class="row clearfix" ng-app="cliente-modulo" ng-controller="ClienteControlador">
             <div class="col-md-12">
-                <h1>{% trans %} Lista de Clientes {% endtrans %}  </h1>
+                <button class="btn btn-success" ng-click="mostrarOuEsconderForm()">Cadastrar Novo Cliente</button>
+
+                <div>
+                    <cliente-form ng-show="mostrarFormFlag" cliente-salvo="adicionarCliente(cliente)"></cliente-form>
+                </div>
+
+                </br>
+
+                <h1>{% trans %}Lista de Clientes {% endtrans %}</h1>
+
                 <hr/>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>{% trans %}Código{% endtrans %}</th>
-                        <th>{% trans %}Nome{% endtrans %}</th>
-                        <th>{% trans %}Cpf{% endtrans %}</th>
-                        <th>{% trans %}Celular{% endtrans %}</th>
-                        <th>{% trans %}Telefone{% endtrans %}</th>
-                        <th>{% trans %}Email{% endtrans %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for cliente in clientes %}
-                        <tr>
-                            <td>{{ cliente.key.id() }}</td>
-                            <td>{{ cliente.nome }}</td>
-                            <td>{{ cliente.cpf }}</td>
-                            <td>{{ cliente.celular }}</td>
-                            <td>{{ cliente.telefone }}</td>
-                            <td>{{ cliente.email }}</td>
-                            <td>
-                            <a href="{{ cliente.detalhes }}" class="btn btn-success btn-sm"><i
-                                    class="glyphicon glyphicon-plus"></i>
-                                {% trans %}Detalhes{% endtrans %}</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+
+
+
+            <div class="col-sm-5 col-sm-offset-1 " ng-repeat="c in clientes" cliente-linha cliente="c"
+                                 cliente-deletado="deletarCliente($index)">
+
+            </div>
+
             </div>
         </div>
     </div>

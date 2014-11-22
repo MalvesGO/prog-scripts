@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from config.template_middleware import TemplateResponse
-from gaepermission.decorator import permissions
-from permission_app.model import ADMIN
+from routes.clientes import rest
 from tekton import router
 from gaecookie.decorator import no_csrf
-from cliente_app import facade
-from routes.clientes.admin import new, edit
+from gaepermission.decorator import login_not_required
 
-@permissions(ADMIN)
-def delete(_handler, cliente_id):
-    facade.delete_cliente_cmd(cliente_id)()
-    _handler.redirect(router.to_path(index))
 
-@permissions(ADMIN)
+@login_not_required
 @no_csrf
 def index():
-    context = {'new_path': router.to_path(new)}
+    context = {
+        'salvar_path': router.to_path(rest.save),
+        'deletar_path': router.to_path(rest.delete),
+        'editar_path': router.to_path(rest.update),
+        'listar_path': router.to_path(rest.index)}
     return TemplateResponse(context)
 

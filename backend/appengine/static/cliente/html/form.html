@@ -1,0 +1,174 @@
+<br/>
+<form  class="well" ng-submit="salvar()" >
+
+    <h1 class="text-center">Cadastro de Cliente</h1>
+
+    <div role="form">
+
+    <div id="cpfDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.cpf!=null]">
+
+        <label for="cpfInput" class="control-label">CPF </label>
+        <input id="cpfInput" type="text" class="form-control" ng-model="cliente.cpf"/>
+        <span id="help-cpf" class="help-block">{{ errors.cpf }}</span>
+
+    </div>
+
+    <div id="nomeDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.nome!=null]">
+
+        <label for="nomeInput" class="control-label">Nome </label>
+        <input id="nomeInput" type="text" class="form-control" ng-model="cliente.nome"/>
+        <span id="help-nome" class="help-block">{{ errors.nome }}</span>
+
+    </div>
+
+        <div id="rgDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.rg!=null]">
+        <label for="rgInput" class="control-label">RG </label>
+        <input id="rgInput" type="text" class="form-control" ng-model="cliente.rg"/>
+        <span id="help-rg" class="help-block">{{ errors.rg }}</span>
+
+    </div>
+
+        <div id="nascimentoDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.nascimento!=null]">
+        <label for="nascimentoInput" class="control-label">Data de Nascimento </label>
+        <input id="nascimentoInput" type="text" class="form-control" ng-model="cliente.nascimento"/>
+        <span id="help-nascimento" class="help-block">{{ errors.nascimento }}</span>
+
+    </div>
+
+    <div id="nacionalidadeDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.nacionalidade!=null]">
+
+        <label for="nacionalidadeInput" class="control-label">Nacionalidade </label>
+        <input id="nacionalidadeInput" type="text" class="form-control" ng-model="cliente.nacionalidade"/>
+        <span id="help-nacionalidade" class="help-block">{{ errors.nacionalidade }}</span>
+
+    </div>
+
+    <div id="estado_civilDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.estado_civil!=null]">
+
+        <label for="estado_civilInput" class="control-label">Estado Civil </label>
+        <input id="estado_civilInput" type="text" class="form-control" ng-model="cliente.estado_civil"/>
+        <span id="help-estado_civil" class="help-block">{{ errors.estado_civil }}</span>
+
+    </div>
+
+    <div id="profissaoDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.profissao!=null]">
+        <label for="profissaoInput" class="control-label">Profissão </label>
+        <input id="profissaoInput" type="text" class="form-control" ng-model="cliente.profissao"/>
+        <span id="help-profissao" class="help-block">{{ errors.profissao }}</span>
+
+    </div>
+
+    <div id="cepDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.cep!=null]">
+
+        <label for="cepInput" class="control-label">CEP </label>
+        <input id="cepInput" type="text" class="form-control" ng-model="cliente.cep"/>
+        <span id="help-cep" class="help-block">{{ errors.cep }}</span>
+
+    </div>
+
+    <div id="enderecoDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.endereco!=null]">
+
+        <label for="enderecoInput" class="control-label">Endereço </label>
+        <input id="enderecoInput" type="text" class="form-control" ng-model="cliente.endereco"/>
+        <span id="help-endereco" class="help-block">{{ errors.endereco }}</span>
+
+    </div>
+
+    <div id="complementoDiv" class="form-group ">
+
+        <label for="complementoInput" class="control-label"> Complemento </label>
+        <input id="complementoInput" type="text" class="form-control" ng-model="cliente.complemento"/>
+
+    </div>
+
+    <div id="numeroDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.numero!=null]">
+
+        <label for="numeroInput" class="control-label">Número </label>
+        <input id="numeroInput" type="text" class="form-control" ng-model="cliente.numero"/>
+        <span id="help-numero" class="help-block">{{ errors.numero }}</span>
+
+    </div>
+
+    <div id="bairroDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.bairro!=null]">
+
+        <label for="bairroInput" class="control-label">Bairro </label>
+        <input id="bairroInput" type="text" class="form-control" ng-model="cliente.bairro"/>
+        <span id="help-bairro" class="help-block">{{ errors.bairro }}</span>
+
+    </div>
+
+    <div id="cidadeDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.cidade!=null]">
+
+        <label for="cidadeInput" class="control-label">Cidade </label>
+        <input id="cidadeInput" type="text" class="form-control" ng-model="cliente.cidade"/>
+        <span id="help-cidade" class="help-block">{{ errors.cidade }}</span>
+
+    </div>
+
+    <div id="estadoDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.estado!=null]">
+
+        <label for="estadoInput" class="control-label">Estado </label>
+            <select id="estadoInput" class="form-control"  ng-model="cliente.estado">
+                <option value=""></option>
+                <option value="Acre">Acre</option>
+                <option value="Alagoas">Alagoas</option>
+                <option value="Amazonas">Amazonas</option>
+                <option value="Amapá">Amapá</option>
+                <option value="Bahia">Bahia</option>
+                <option value="Ceará">Ceará</option>
+                <option value="Distrito Federal">Distrito Federal</option>
+                <option value="Espirito Santo">Espirito Santo</option>
+                <option value="Goiás">Goiás</option>
+                <option value="Maranhão">Maranhão</option>
+                <option value="Minas Gerais">Minas Gerais</option>
+                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                <option value="Mato Grosso">Mato Grosso</option>
+                <option value="Pará">Pará</option>
+                <option value="Paraíba">Paraíba</option>
+                <option value="Pernambuco">Pernambuco</option>
+                <option value="Piauí">Piauí</option>
+                <option value="Paraná">Paraná</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                <option value="Rondônia">Rondônia</option>
+                <option value="Roraima">Roraima</option>
+                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                <option value="Santa Catarina">Santa Catarina</option>
+                <option value="Sergipe">Sergipe</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Tocantins">Tocantins</option>
+            </select>
+        <span id="help-estado" class="help-block">{{ errors.estado }}</span>
+
+    </div>
+
+    <div id="telefoneDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.telefone!=null]">
+
+        <label for="telefoneInput" class="control-label">Telefone </label>
+        <input id="telefoneInput" type="text" class="form-control" ng-model="cliente.telefone"/>
+        <span id="help-telefone" class="help-block">{{ errors.telefone }}</span>
+
+    </div>
+
+    <div id="celularDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.celular!=null]">
+
+        <label for="celularInput" class="control-label">Celular </label>
+        <input id="celularInput" type="text" class="form-control" ng-model="cliente.celular"/>
+        <span id="help-celular" class="help-block">{{ errors.celular }}</span>
+
+    </div>
+
+    <div id="emailDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.email!=null]">
+
+        <label for="emailInput" class="control-label">E-mail </label>
+        <input id="emailInput" type="text" class="form-control" ng-model="cliente.email"/>
+        <span id="help-email" class="help-block">{{ errors.email }}</span>
+
+    </div>
+
+    <button type="submit" class="btn btn-success" >Salvar</button>
+        <img ng-show="executandoSalvamento" src="/static/img/ajax.gif" >
+    </div>
+
+    </div>
+    </form>

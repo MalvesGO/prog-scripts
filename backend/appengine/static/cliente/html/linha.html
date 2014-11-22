@@ -1,0 +1,171 @@
+<div class="thumbnail">
+
+<div class="caption">
+
+
+    <table class="table table-striped">
+        <thead>
+            <h3>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+
+
+                <span ng-hide="editandoFlag">{{ cliente.nome }}</span>
+                <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.nome" />
+
+                 <small>{{ cliente.id }}</small>
+
+
+                <button class="btn btn-primary"  ng-click="entrarModoEdicao()" ng-hide="editandoFlag">
+                    <i class="glyphicon glyphicon-pencil"> </i>
+                </button>
+
+                <div ng-show="editandoFlag" style="width: 150px;">
+
+                    <button class="btn btn-warning" ng-click="sairModoEdicao()">
+                        <i class="glyphicon glyphicon-floppy-remove"></i>
+                    </button>
+                    <button class="btn btn-success" ng-click="editar()">
+                        <i class="glyphicon glyphicon-floppy-save"></i>
+                    </button>
+                </div>
+
+            </h3>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>CPF</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.cpf }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.cpf" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>RG</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.rg }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.rg" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Data de Nascimento</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.nascimento }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.nascimento" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Estado Civil</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.estado_civil }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.estado_civil" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Profissão</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.profissao }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.profissao" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>CEP</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.cep }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.cep" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Endereco</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.endereco }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.endereco" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Numero</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.numero }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.numero" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Complemento</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.complemento}}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.complemento" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Bairro</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.bairro }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.bairro" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Cidade</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.cidade }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.cidade" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Estado</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.estado }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.estado" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Telefone</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.telefone }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.telefone" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Celular</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.celular }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.celular" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>E-mail</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.email }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.email" />
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+
+				<td align="right">
+
+                    <button class="btn btn-danger" ng-disabled="apagandoFlag" ng-click="deletar()">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                    <img ng-show="apagandoFlag" src="/static/img/ajax.gif">
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+</div>

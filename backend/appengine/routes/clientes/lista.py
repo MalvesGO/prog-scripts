@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from cliente_app.model import Cliente
 from config.template_middleware import TemplateResponse
-from gaecookie.decorator import no_csrf
-from gaepermission.decorator import permissions
-from permission_app.model import ADMIN, CORRETOR
-from routes.imoveis.home import exibir
+from routes.clientes import rest
 from tekton import router
+from gaecookie.decorator import no_csrf
+from gaepermission.decorator import login_not_required
 
 
-@permissions(ADMIN, CORRETOR)
+@login_not_required
 @no_csrf
 def index():
-    query = Cliente.query().order(Cliente.nome)
-    clientes = query.fetch()
-    contexto = {'clientes': clientes}
-    return TemplateResponse(contexto)
+    context = {
+        'salvar_path': router.to_path(rest.save),
+        'deletar_path': router.to_path(rest.delete),
+        'editar_path': router.to_path(rest.update),
+        'listar_path': router.to_path(rest.index)}
+    return TemplateResponse(context)
+
